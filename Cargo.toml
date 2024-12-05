@@ -1,18 +1,17 @@
 [package]
-name = "service-rs"
+name = "cross_platform_service"
 version = "0.1.0"
 edition = "2021"
 
-# Here cfg(windows) is used to specify the dependencies for the Windows platform
+[dependencies]
+log = "0.4"
+simplelog = "0.12"
+clap = { version = "4.3", features = ["derive"] }
+lazy_static = "1.4"
 
 [target.'cfg(windows)'.dependencies]
 windows-service = "0.6.0"
+winreg = "0.10"
 
-# Here cfg(unix) is used to specify the dependencies for the Unix platform
 [target.'cfg(unix)'.dependencies]
-daemonize = "0.5.0"
-
-[dependencies]
-log = "0.4"
-simple_logger = "0.12"
-
+nix = "0.26"
